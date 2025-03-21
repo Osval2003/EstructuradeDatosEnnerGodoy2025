@@ -1,0 +1,32 @@
+
+
+        <?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+<!-- Definición de los appender (donde se registrarán los logs) -->
+<Appenders>
+    <!-- Console Appender: para mostrar los logs en la consola -->
+    <Console name="Console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
+    </Console>
+
+    <!-- File Appender: opcional, para guardar los logs en un archivo -->
+    <File name="File" fileName="logs/app.log">
+        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
+    </File>
+</Appenders>
+
+<!-- Configuración de los loggers -->
+<Loggers>
+    <!-- Logger raíz: controla el nivel de log para toda la aplicación -->
+    <Root level="debug">
+        <!-- Enlaza los appender a este logger -->
+        <AppenderRef ref="Console"/>
+        <AppenderRef ref="File"/>
+    </Root>
+
+    <!-- Logger para clases específicas (opcional) -->
+    <Logger name="org.apache" level="warn" additivity="false">
+        <AppenderRef ref="Console"/>
+    </Logger>
+</Loggers>
+</Configuration>
